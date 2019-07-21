@@ -13,9 +13,9 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar,
+  StatusBar,Dimensions,TouchableOpacity
 } from 'react-native';
-
+import { createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation';
 import {
   Header,
   LearnMoreLinks,
@@ -25,104 +25,25 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import * as Progress from 'react-native-progress';
+import { LineChart } from 'react-native-line-chart';
+import Home from './Components/Home';
+import TempChart from './Components/TempChart';
+import HumChart from './Components/HumChart';
+import Main from './Components/Main'  ;                                                                                                                   nents/Main';
 
-const App = () => {
-  return (
-    <Fragment>
-      
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-             
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-        <View style={{ flex: 1, paddingLeft: 5 }}>
-        <Text> Temp </Text>
-           <AnimatedCircularProgress
-  size={100}
-  width={6}
-  fill={3}
-  tintColor="red"
-  backgroundColor="#3d5875">
+export default createAppContainer(createStackNavigator(
   {
-    (fill) => (
-      <Text>
-        { 3}
-      </Text>
-    )
-  }
-</AnimatedCircularProgress>
-        </View>
-        <View style={{ flex: 1, paddingRight: 10 }}>
-        <Text>humidity </Text>
-           <AnimatedCircularProgress
-  size={100}
-  width={6}
-  fill={3}
-  tintColor="red"
-  backgroundColor="#3d5875">
+    Home:Home,
+    TempChart:TempChart,
+    HumChart:HumChart,
+    Main:Main
+    
+    
+  },
   {
-    (fill) => (
-      <Text>
-        { 3}
-      </Text>
-    )
-  }
+    initialRouteName: 'Main',
+    
+    },
 
-</AnimatedCircularProgress>
-        </View>
-        
-      </View>
-            </View>
-         
-    <Progress.Bar progress={4} width={30} />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
-  );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
-
-export default App;
+)
+);
