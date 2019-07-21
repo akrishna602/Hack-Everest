@@ -1,3 +1,6 @@
+//This file is for Node MCU that collects data from DHT-11 sensor and Ultrasonic Sensor and puses the data to FireBase server.
+//The sensor data can also be viewed from serial monitor.
+
 #include <ESP8266WiFi.h>
 #include <FirebaseArduino.h>
 #include <DHT.h>
